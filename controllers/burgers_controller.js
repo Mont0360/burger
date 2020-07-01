@@ -1,45 +1,53 @@
-let express = require('express');
-let router = express.Router();
-let burger = require('../models/burger.js');
+var express = require("express");
 
+var router = express.Router();
+// Import the model (cat.js) to use its database functions.
+var burger = require("../models/burger.js");
 
-// route defined for the root of the app
-// GET method redirects user to /burgers URI
-router.get('/', function (req, res) {
-	res.redirect('/burgers');
+// Create all our routes and set up logic within those routes where required.
+router.get("/", function(req, res) {
+  res.redirect("/burgers");
 });
 
-// route defined for the /burgers URI
-// GET method - selectAll callback function
-router.get('/burgers', function (req, res) {
-	burger.selectAll(function (data) {
-		let hbsObject = { burgers: data };
-		console.log(hbsObject);
-		res.render('index', hbsObject);
-	});
+router.get("/burgers", function(req, res) {
+  burger.all(function(data) {
+    var hbsObject = {
+      burgers: data
+    };
+    console.log(hbsObject);
+    res.render("index", hbsObject);
+  });
 });
 
-// route defined for the /burgers/create URI
-
-router.post('/burgers/create', function (req, res) {
-	burger.insertOne(['burger_name','devoured'], [req.body.burger_name,0], function () {
-		res.redirect('/burgers');
-	});
+router.post("/burgers/create", function(req, res) {
+  burger.create([
+    "burger_name", "devoured"
+  ], [
+    req.body.burger_name, req.body.devoured
+  ], function() {
+    res.redirect("/burgers");
+  });
 });
 
-// route defined for the /burgers/update/[params] URI
-// In index.handlebars, we used method-override using a query value
-// to override POST with a PUT
+router.put("/burgers/update/:id", function(req, res) {
+  var condition = "id = " + req.params.id;
 
-router.put('/burgers/update/:id', function (req, res) {
-	let condition = 'id = ' + req.params.id;
+  console.log("condition", condition);
 
-	console.log('condition', condition);
-
-	burger.updateOne({ devoured: req.body.devoured }, condition, function () {
-		res.redirect('/burgers');
-	});
+  burger.update({
+    devoured: req.body.devoured
+  }, condition, function() {
+    res.redirect("/burgers");
+  });
 });
 
+router.delete("/burgers/delete/:id", function(req, res) {
+  var condition = "id = " + req.params.id;
 
+  cat.delete(condition, function() {
+    res.redirect("/burgers");
+  });
+});
+
+// Export routes for server.js to use.
 module.exports = router;
