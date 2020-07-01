@@ -14,17 +14,6 @@ let mysql = require("mysql");
     database: "jgowbo73nzhnpvf9"
 });
 
-if (process.env.JAWSDB_URL){
-  connection = mysql.createConnection(process.env.JAWSDB_URL);
-} else {
-  connection = mysql.createConnection({
-    host : "localhost",
-    user: "root",
-    password: "Van1gogh!",
-    database: "burgers_db"
-  });
-};
-
 // Make connection.
 connection.connect(function(err) {
   if (err) {
