@@ -1,6 +1,6 @@
 li {
-    margin: 10px;
-    padding: 10px;
+    margin: 5px;
+    padding: 5px;
   }
   
   .label {
@@ -8,22 +8,22 @@ li {
   }
   
   .create-update-form {
-    margin: 10px;
-    padding: 10px;
+    margin: 5px;
+    padding: 5px;
   }
   
   .form-group {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
   }
   body {
       text-align: center;
       background-color: lightgray;
-      color: orangered
+      color: rgb(85, 24, 2)
       
   }
 
   h1 {
       text-align: center;
-      color: green;
+      color: gray;
   }
 
