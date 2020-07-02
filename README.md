@@ -10,6 +10,10 @@ Each burger in the waiting area also has a Devour it! button. When the user clic
 
 This app will store every burger in a database, whether devoured or not.
 
+## Screen Shot of App
+
+![Screen Shot 2020-07-01 at 7 56 40 PM](https://user-images.githubusercontent.com/61704824/86304662-32077880-bbd5-11ea-89fd-338fc67f6f7e.png)
+
 ## Heroku link
 https://burger-mont0360.herokuapp.com/burgers
 
